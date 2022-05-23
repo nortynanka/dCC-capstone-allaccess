@@ -1,4 +1,5 @@
 const { User, validateLogin, validateUser } = require("../models/user");
+const { Post, validatePost } = require("../models/post");
 
 const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
@@ -156,6 +157,32 @@ router.delete("/:userID", [auth, admin], async (req, res) => {
       .send(user);
   } catch (ex) {
     return res.status(500).send(`Internal server error: ${ex}`);
+  }
+});
+
+// POST new post to user by user ID
+
+router.post("/:userId/posts", async (req, res) => {
+  try {
+
+    const { error } = validatePost(req.body);
+    if (error) return res.status(400).send(error);
+
+    let user = await user.findById(req.params.userId);
+    if (!user)
+      return res
+        .status(400)
+        .send(`User with ID ${req.params.userId} does not exist!`);
+
+    if (error) return res.status(400).send(error);
+
+    const newPost = await new Post(req.body);
+    user.posts.push(newPost);
+    await user.save();
+
+    return res.status(201).send([newPost, user]);
+  } catch (error) {
+    return res.status(500).send(`Internal Server Error: ${error}`);
   }
 });
 

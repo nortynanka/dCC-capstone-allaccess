@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Joi = require("joi");
 const jwt = require("jsonwebtoken");
+const { postSchema } = require("./post");
 
 
 const userSchema = mongoose.Schema({
@@ -46,7 +47,11 @@ const userSchema = mongoose.Schema({
     isOwner: {
         type: Boolean,
         required: false,
-    }
+    },
+    posts: [{ /* This is an array of JSON objects */
+        type: postSchema,
+        required: false
+    }]
 });
 
 userSchema.methods.generateAuthToken = function () {
@@ -60,6 +65,7 @@ userSchema.methods.generateAuthToken = function () {
             isAdmin: this.isAdmin,
             isCaregiver: this.isCaregiver,
             isOwner: this.isOwner,
+            posts: this.posts
         },
         process.env.JWT_SECRET
     );
@@ -74,7 +80,8 @@ const validateUser = (user) => {
         bio: Joi.string().min(5).max(5000),
         isAdmin: Joi.bool(),
         isCaregiver: Joi.bool(),
-        isOwner: Joi.bool()
+        isOwner: Joi.bool(),
+        posts: Joi.array()
     });
 
     return schema.validate(user);

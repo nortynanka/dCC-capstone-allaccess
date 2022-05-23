@@ -11,17 +11,17 @@ const postSchema = mongoose.Schema({
     },
     date: {
         type: Date,
-        required: true,
+        required: false,
         minLength: 4,
-        maxLength: 32
+        maxLength: 32,
     },
     isOwner: {
         type: Boolean,
-        required: false
+        required: false,
     },
     isCaregiver: {
         type: Boolean,
-        required: false
+        required: false,
     },
     hasOnSiteParking: {
         type: Boolean,
@@ -67,11 +67,11 @@ const postSchema = mongoose.Schema({
         type: String,
         minLength: 10,
         maxLength: 5000,
-        required: false,
+        required: true,
     },
 });
 
-userSchema.methods.generateAuthToken = function () {
+postSchema.methods.generateAuthToken = function () {
     return jwt.sign(
         {
             _id: this._id,
@@ -110,7 +110,7 @@ const validatePost = (post) => {
         hasVisualAids: Joi.bool(),
         hasAssistants: Joi.bool(),
         hasSeatingSection: Joi.bool(),
-        notes: Joi.string().min(10).max(5000)
+        notes: Joi.string().min(10).max(5000).required()
     })
 
     return schema.validate(post);
