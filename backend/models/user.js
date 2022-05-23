@@ -21,7 +21,19 @@ const userSchema = mongoose.Schema({
         type: String,
         required: true,
         minLength: 8,
-        maxLength: 255,
+        maxLength: 120,
+    },
+    location: {
+        type: String,
+        required: false,
+        minLength: 2,
+        maxLength: 80,
+    },
+    bio: {
+        type: String,
+        required: false,
+        minLength: 5,
+        maxLength: 5000
     },
     isAdmin: {
         type: Boolean,
@@ -43,6 +55,8 @@ userSchema.methods.generateAuthToken = function () {
             _id: this._id,
             name: this.name,
             email: this.email,
+            location: this.location,
+            bio: this.bio,
             isAdmin: this.isAdmin,
             isCaregiver: this.isCaregiver,
             isOwner: this.isOwner,
@@ -55,10 +69,12 @@ const validateUser = (user) => {
     const schema = Joi.object({
         name: Joi.string().min(5).max(50).required(),
         email: Joi.string().min(5).max(255).required().email(),
-        password: Joi.string().min(5).max(1024),
+        password: Joi.string().min(8).max(120).required(),
+        location: Joi.string().min(2).max(80),
+        bio: Joi.string().min(5).max(5000),
         isAdmin: Joi.bool(),
         isCaregiver: Joi.bool(),
-        isOwner: Joi.bool(),
+        isOwner: Joi.bool()
     });
 
     return schema.validate(user);
@@ -67,7 +83,7 @@ const validateUser = (user) => {
 const validateLogin = (req) => {
     const schema = Joi.object({
         email: Joi.string().min(5).max(255).required().email(),
-        password: Joi.string().min(5).max(255).required()
+        password: Joi.string().min(5).max(120).required()
     });
 
     return schema.validate(req);

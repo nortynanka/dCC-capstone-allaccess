@@ -42,8 +42,8 @@ const locationSchema = mongoose.Schema({
     phone: {
         type: String,
         required: true,
-        minLength: 11,
-        maxLength: 22,
+        minLength: 10,
+        maxLength: 20,
     },
     isOwnerRegistered: {
         type: Boolean,
@@ -52,49 +52,9 @@ const locationSchema = mongoose.Schema({
     ownerName: {
         type: String,
         required: false,
-        minLength: 5,
+        minLength: 2,
         maxLength: 50,
     },
-    hasOnSiteParking: {
-        type: Boolean,
-        required: false,
-    },
-    hasEntrances: {
-        type: Boolean,
-        required: false,
-    },
-    isOneLevel: {
-        type: Boolean,
-        required: false,
-    },
-    hasElevator: {
-        type: Boolean,
-        required: false,
-    },
-    hasEscalator: {
-        type: Boolean,
-        required: false,
-    },
-    hasStairsOnly: {
-        type: Boolean,
-        required: false,
-    },
-    hasHearingDevices: {
-        type: Boolean,
-        required: false,
-    },
-    hasVisualAids: {
-        type: Boolean,
-        required: false,
-    },
-    hasAssistants: {
-        type: Boolean,
-        required: false,
-    },
-    hasSeatingSection: {
-        type: Boolean,
-        required: false,
-    }
 });
 
 locationSchema.methods.generateAuthToken = function () {
@@ -110,16 +70,6 @@ locationSchema.methods.generateAuthToken = function () {
             phone: this.phone,
             isOwnerRegistered: this.isOwnerRegistered,
             ownerName: this.ownerName,
-            hasOnSiteParking: this.hasParking,
-            hasEntrances: this.hasEntrances,
-            isOneLevel: this.isOneLevel,
-            hasElevator: this.hasElevator,
-            hasEscalator: this.hasEscalator,
-            hasStairsOnly: this.hasStairsOnly,
-            hasHearingDevices: this.hasHearingDevices,
-            hasVisualAids: this.hasVisualAids,
-            hasAssistants: this.hasAssistants,
-            hasSeatingSection: this.hasSeatingSection,
         },
         process.env.JWT_SECRET
     );
@@ -132,6 +82,10 @@ const validateLocation = (location) => {
         streetAddress: Joi.string().min(5).max(100).required(),
         city: Joi.string.min(3).max(50).required(),
         state: Joi.string.length(2).required(),
+        country: Joi.string.min(2).max(60).required(),
+        phone: Joi.string.min(10).max(20),
+        isOwnerRegistered: Joi.bool(),
+        ownerName:  Joi.string.min(2).max(50)
     });
 
     return schema.validate(location);
