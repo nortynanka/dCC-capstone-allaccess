@@ -25,7 +25,7 @@ router.post("/register", async (req, res) => {
 
     const salt = await bcrypt.genSalt(10);
     user = new User({
-      name: req.body.name,
+      nickname: req.body.nickname,
       email: req.body.email,
       password: await bcrypt.hash(req.body.password, salt),
       isAdmin: req.body.isAdmin,
@@ -40,7 +40,7 @@ router.post("/register", async (req, res) => {
       .header("access-control-expose-headers", "x-auth-token")
       .send({
         _id: user._id,
-        name: user.name,
+        nickname: user.nickname,
         email: user.email,
         isAdmin: user.isAdmin,
         isCaregiver: user.isCaregiver,
@@ -168,7 +168,7 @@ router.post("/:userId/posts", async (req, res) => {
     const { error } = validatePost(req.body);
     if (error) return res.status(400).send(error);
 
-    let user = await user.findById(req.params.userId);
+    let user = await User.findById(req.params.userId);
     if (!user)
       return res
         .status(400)

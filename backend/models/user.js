@@ -5,7 +5,7 @@ const { postSchema } = require("./post");
 
 
 const userSchema = mongoose.Schema({
-    name: {
+    nickname: {
         type: String,
         required: true,
         minLength: 5,
@@ -58,7 +58,7 @@ userSchema.methods.generateAuthToken = function () {
     return jwt.sign(
         {
             _id: this._id,
-            name: this.name,
+            nickname: this.name,
             email: this.email,
             location: this.location,
             bio: this.bio,
@@ -73,7 +73,7 @@ userSchema.methods.generateAuthToken = function () {
 
 const validateUser = (user) => {
     const schema = Joi.object({
-        name: Joi.string().min(5).max(50).required(),
+        nickname: Joi.string().min(5).max(50).required(),
         email: Joi.string().min(5).max(255).required().email(),
         password: Joi.string().min(8).max(120).required(),
         location: Joi.string().min(2).max(80),
