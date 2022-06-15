@@ -3,7 +3,7 @@ import LocationCard from "./LocationCard";
 
 const LocationMapper = (props) => {
   return (
-    <div id="userMapper">
+    <div id="locationsMapper">
       <p className="locationsMapper">
         {props.allLocations &&
           props.allLocations.map((location) => (

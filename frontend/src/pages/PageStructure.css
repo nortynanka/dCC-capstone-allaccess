@@ -1,0 +1,22 @@
+h3 {
+    font-size: 1rem;
+}
+
+button {
+    background: #F2C879;
+    border: 1pt, white;
+    color: white;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+}
+
+button:hover {
+    background: #FFDA96;
+    color: white;
+    cursor: pointer;
+}
+
+routeLink {
+    background: transparent;
+    color: white;
+}

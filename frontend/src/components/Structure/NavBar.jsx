@@ -2,6 +2,9 @@ import React, { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 
+import "./NavBar.css";
+
+
 const NavBar = () => {
   const { logoutUser, user } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -9,14 +12,17 @@ const NavBar = () => {
   return (
     <div className="navBar">
       <ul>
-        <li className="brand">
-          <Link to="/home">Home</Link>
+        <li className="navBrand">
+          <Link to="/home">allAccess</Link>
         </li>
-        <li>
+        <li className="navLink">
           <Link to="/register">Register</Link>
         </li>
-        <li>
-          <Link to="/feedback">Feedback</Link>
+        <li className="navLink">
+          <Link to="/feedback">Submit Feedback</Link>
+        </li>
+        <li className="navLink">
+          <Link to="/newlocation">Add a Business</Link>
         </li>
         <li>
           {user ? (

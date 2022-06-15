@@ -1,11 +1,11 @@
 import React from 'react';
 import LocationCard from '../Location/LocationCard';
 
-const ResultsMapper = ({locations}) => {
+const ResultsMapper = (props) => {
 
     return ( 
         <div>
-            {locations && locations.map((location) => 
+            {props.locations && props.locations.map((location) => 
                 <li key={location._id}>
                     <LocationCard location={location} />
                 </li>

@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SearchBar from "../components/Search/SearchBar";
 import ResultsMapper from "../components/Search/ResultsMapper";
-import UserCard from "../components/User/UserCard";
 import axios from "axios";
+
+import "./PageStructure.css";
 
 const HomePage = () => {
   const [userInput, setUserInput] = useState("");
   const [locations, setLocations] = useState(null);
-  const decodedUser = localStorage.getItem("token");
-
-  useEffect(() => {}, []);
 
   const placeSearch = async () => {
     await axios
@@ -23,7 +21,6 @@ const HomePage = () => {
   return (
     <div>
       <h3><b><i>Search</i></b> for a Milwaukee business</h3>
-      <UserCard user={decodedUser} />
       <SearchBar placeSearch={placeSearch} userInput={userInput} setUserInput={setUserInput} />
       <ResultsMapper locations={locations} setLocations={setLocations} />
     </div>

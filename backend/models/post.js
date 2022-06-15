@@ -3,21 +3,27 @@ const Joi = require("joi");
 const jwt = require("jsonwebtoken");
 
 const postSchema = mongoose.Schema({
+    locationID: {
+        type: String,
+        required: false,
+    },
     author: {
         type: String,
         required: true,
         minLength: 5,
-        maxLength: 50
+        maxLength: 50,
     },
-    date: {
+    currentDate: {
         type: Date,
-        required: false,
-        minLength: 4,
-        maxLength: 32,
+        required: true,
+    },
+    visitDate: {
+        type: Date,
+        required: true,
     },
     isOwner: {
         type: Boolean,
-        required: false,
+        required: true,
     },
     isCaregiver: {
         type: Boolean,
@@ -63,6 +69,10 @@ const postSchema = mongoose.Schema({
         type: Boolean,
         required: false,
     },
+    employeeAttitudes: {
+        type: Boolean,
+        required: false,
+    },
     notes: {
         type: String,
         minLength: 10,
@@ -75,8 +85,10 @@ postSchema.methods.generateAuthToken = function () {
     return jwt.sign(
         {
             _id: this._id,
+            locationID: this.locationID,
             author: this.author,
-            date: this.date,
+            currentDate: this.currentDate,
+            visitDate: this.visitDate,
             isCaregiver: this.isCaregiver,
             isOwner: this.isOwner,
             hasOnSiteParking: this.hasParking,
@@ -89,6 +101,7 @@ postSchema.methods.generateAuthToken = function () {
             hasVisualAids: this.hasVisualAids,
             hasAssistants: this.hasAssistants,
             hasSeatingSection: this.hasSeatingSection,
+            employeeAttitudes: this.employeeAttitudes,
             notes: this.notes
         },
         process.env.JWT_SECRET
@@ -97,12 +110,15 @@ postSchema.methods.generateAuthToken = function () {
 
 const validatePost = (post) => {
     const schema = Joi.object({
+        locationID: Joi.string(),
         author: Joi.string().min(5).max(50).required(),
-        date: Joi.date().min(4).max(32),
+        currentDate: Joi.date().required(),
+        visitDate: Joi.date().required(),
         isOwner: Joi.bool(),
         isCaregiver: Joi.bool(),
         hasOnSiteParking: Joi.bool(),
         hasEntrances: Joi.bool(),
+        isOneLevel: Joi.bool(),
         hasElevator: Joi.bool(),
         hasEscalator: Joi.bool(),
         hasStairsOnly: Joi.bool(),
@@ -110,6 +126,7 @@ const validatePost = (post) => {
         hasVisualAids: Joi.bool(),
         hasAssistants: Joi.bool(),
         hasSeatingSection: Joi.bool(),
+        employeeAttitudes: Joi.bool(),
         notes: Joi.string().min(10).max(5000).required()
     })
 

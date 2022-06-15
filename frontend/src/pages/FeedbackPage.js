@@ -1,12 +1,28 @@
 import React from "react";
 import useCustomForm from "../hooks/useCustomForm";
 
+import "./PageStructure.css";
+
 const FeedbackPage = () => {
-  const defaultValues = {};
+  const defaultValues = {
+    nickname: "",
+    currentDate: "",
+    visitDate: "",
+    hasOnSiteParking: false,
+    hasEntrances: false,
+    isOneLevel: false,
+    hasElevator: false,
+    hasEscalator: false,
+    hasStairsOnly: false,
+    hasHearingDevices: false,
+    hasVisualAids: false,
+    hasAssistants: false,
+    hasSeatingSection: false,
+    employeeAttitudes: false,
+    notes: "",
+  };
   const [formData, handleInputChange, handleSubmit] =
     useCustomForm(defaultValues);
-
-  let nowDate = new Date().toLocaleDateString;
 
   return (
     <div className="container">
@@ -38,8 +54,7 @@ const FeedbackPage = () => {
             <input
               type="date"
               name="currentDate"
-              value={nowDate}
-              readOnly={true}
+              onChange={(e) => handleInputChange(e)}
             />
           </label>
         </p>
@@ -47,7 +62,11 @@ const FeedbackPage = () => {
           {" "}
           <label>
             Date of Visit:{" "}
-            <input type="date" name="visitDate" value={nowDate} />
+            <input
+              type="date"
+              name="visitDate"
+              onChange={(e) => handleInputChange(e)}
+            />
           </label>
         </p>
         <p>
@@ -55,7 +74,7 @@ const FeedbackPage = () => {
           <label>
             Is there parking on site?{" "}
             <input
-              type="radio"
+              type="checkbox"
               name="hasOnSiteParking"
               value={formData.hasOnSiteParking}
               onChange={(e) => handleInputChange(e)}
@@ -67,7 +86,7 @@ const FeedbackPage = () => {
           <label>
             Do the entrances and exits open automatically?{" "}
             <input
-              type="radio"
+              type="checkbox"
               name="hasEntrances"
               value={formData.hasEntrances}
               onChange={(e) => handleInputChange(e)}
@@ -79,7 +98,7 @@ const FeedbackPage = () => {
           <label>
             Is the business one-leveled?{" "}
             <input
-              type="radio"
+              type="checkbox"
               name="isOneLevel"
               value={formData.isOneLevel}
               onChange={(e) => handleInputChange(e)}
@@ -91,7 +110,7 @@ const FeedbackPage = () => {
           <label>
             Is there a public elevator?{" "}
             <input
-              type="radio"
+              type="checkbox"
               name="hasElevator"
               value={formData.hasElevator}
               onChange={(e) => handleInputChange(e)}
@@ -103,7 +122,7 @@ const FeedbackPage = () => {
           <label>
             Is there a public escalator?{" "}
             <input
-              type="radio"
+              type="checkbox"
               name="hasEscalator"
               value={formData.hasEscalator}
               onChange={(e) => handleInputChange(e)}
@@ -115,7 +134,7 @@ const FeedbackPage = () => {
           <label>
             Are all visitors expected to use stairs?{" "}
             <input
-              type="radio"
+              type="checkbox"
               name="hasStairsOnly"
               value={formData.hasStairsOnly}
               onChange={(e) => handleInputChange(e)}
@@ -127,7 +146,7 @@ const FeedbackPage = () => {
           <label>
             Are audio devices available to use?{" "}
             <input
-              type="radio"
+              type="checkbox"
               name="hasHearingDevices"
               value={formData.hasHearingDevices}
               onChange={(e) => handleInputChange(e)}
@@ -139,7 +158,7 @@ const FeedbackPage = () => {
           <label>
             Are visual aids available to use?{" "}
             <input
-              type="radio"
+              type="checkbox"
               name="hasVisualAids"
               value={formData.hasVisualAids}
               onChange={(e) => handleInputChange(e)}
@@ -152,7 +171,7 @@ const FeedbackPage = () => {
             Can visitors request an assistant to accompany them through this
             business?{" "}
             <input
-              type="radio"
+              type="checkbox"
               name="hasAssistants"
               value={formData.hasAssistants}
               onChange={(e) => handleInputChange(e)}
@@ -164,7 +183,7 @@ const FeedbackPage = () => {
           <label>
             Are there seating sections reserved for visitors with disabilities?{" "}
             <input
-              type="radio"
+              type="checkbox"
               name="hasSeatingSection"
               value={formData.hasSeatingSection}
               onChange={(e) => handleInputChange(e)}
@@ -177,7 +196,7 @@ const FeedbackPage = () => {
             Did the employees approach any requests for accommodation with a
             positive attitude?{" "}
             <input
-              type="radio"
+              type="checkbox"
               name="employeeAttitudes"
               value={formData.employeeAttitudes}
               onChange={(e) => handleInputChange(e)}
@@ -197,6 +216,7 @@ const FeedbackPage = () => {
             />
           </label>
         </p>
+        <button type="submit">Submit Form</button>
       </form>
     </div>
   );

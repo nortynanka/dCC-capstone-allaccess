@@ -1,6 +1,10 @@
-import React, {useContext} from "react";
+import React from "react";
+import AuthContext from "../../context/AuthContext";
 
-const UserInfoDisplay = ({ user }) => {
+const UserInfoDisplay = () => {
+
+
+
   return (
     <div id="userInfo">
       <h2>Name: {user.name}</h2>

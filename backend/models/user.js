@@ -24,9 +24,9 @@ const userSchema = mongoose.Schema({
         minLength: 8,
         maxLength: 120,
     },
-    location: {
+    address: {
         type: String,
-        required: false,
+        required: true,
         minLength: 2,
         maxLength: 80,
     },
@@ -47,11 +47,7 @@ const userSchema = mongoose.Schema({
     isOwner: {
         type: Boolean,
         required: false,
-    },
-    posts: [{ /* This is an array of JSON objects */
-        type: postSchema,
-        required: false
-    }]
+    }
 });
 
 userSchema.methods.generateAuthToken = function () {
@@ -60,12 +56,11 @@ userSchema.methods.generateAuthToken = function () {
             _id: this._id,
             nickname: this.name,
             email: this.email,
-            location: this.location,
+            address: this.address,
             bio: this.bio,
             isAdmin: this.isAdmin,
             isCaregiver: this.isCaregiver,
-            isOwner: this.isOwner,
-            posts: this.posts
+            isOwner: this.isOwner
         },
         process.env.JWT_SECRET
     );
@@ -76,12 +71,11 @@ const validateUser = (user) => {
         nickname: Joi.string().min(5).max(50).required(),
         email: Joi.string().min(5).max(255).required().email(),
         password: Joi.string().min(8).max(120).required(),
-        location: Joi.string().min(2).max(80),
+        address: Joi.string().min(2).max(80).required(),
         bio: Joi.string().min(5).max(5000),
         isAdmin: Joi.bool(),
         isCaregiver: Joi.bool(),
-        isOwner: Joi.bool(),
-        posts: Joi.array()
+        isOwner: Joi.bool()
     });
 
     return schema.validate(user);

@@ -6,7 +6,11 @@ const admin = require("../middleware/admin");
 
 const bcrypt = require("bcrypt");
 const express = require("express");
+const { default: axios } = require("axios");
 const router = express.Router();
+const mongoose = require("mongoose");
+
+mongoose.set("useFindAndModify", false);
 
 // POST register a new user
 
@@ -28,6 +32,7 @@ router.post("/register", async (req, res) => {
       nickname: req.body.nickname,
       email: req.body.email,
       password: await bcrypt.hash(req.body.password, salt),
+      address: req.body.address,
       isAdmin: req.body.isAdmin,
       isCaregiver: req.body.isCaregiver,
       isOwner: req.body.isOwner,
@@ -42,6 +47,7 @@ router.post("/register", async (req, res) => {
         _id: user._id,
         nickname: user.nickname,
         email: user.email,
+        address: user.address,
         isAdmin: user.isAdmin,
         isCaregiver: user.isCaregiver,
         isOwner: user.isOwner,
@@ -80,7 +86,6 @@ router.post("/login", async (req, res) => {
 router.get("/", [auth], async (req, res) => {
   try {
     const users = await User.find();
-
     return res.send(users);
   } catch (ex) {
     return res.status(500).send(`Internal server error: ${ex}`);
@@ -105,7 +110,43 @@ router.get("/:userID/getOneUser", [auth], async (req, res) => {
 
 // GET all business owners
 
-// GET  all regular users
+// GET all regular users
+
+// GET user's location from their profile
+
+router.get("/:userID/getLocation", [auth], async (req, res) => {
+  try {
+    let user = await User.findById(req.params.userID);
+    if (!user)
+      return res
+        .status(400)
+        .send(`User with ID ${req.params.userID} does not exist!`);
+    await User.findById();
+    return res.status(200).send(user.address);
+  } catch (ex) {
+    return res.status(500).send(`Internal server error: ${ex}`);
+  }
+});
+
+// GET distance to business from user's location
+
+router.get(
+  "/googlePlace/:userLocation/:destination",
+  [auth],
+  async (req, res) => {
+    try {
+      let userDistance =
+        await axios.get(`https://maps.googleapis.com/maps/api/distancematrix/json
+    ?destinations=${destination}
+    &origins=${userLocation}
+    &units=imperial
+    &key=API_KEY`);
+      return res.send(userDistance.data.rows.elements.distance.text);
+    } catch (ex) {
+      return res.status(500).send(`Internal server error: ${ex}`);
+    }
+  }
+);
 
 // PUT update to user
 
@@ -117,8 +158,7 @@ router.put("/:userID/updateUser", [auth], async (req, res) => {
     let user = await User.findByIdAndUpdate(
       req.params.userID,
       { ...req.body },
-      { new: true },
-      { useFindAndModify: false }
+      { new: true }
     );
     if (!user)
       return res
@@ -157,32 +197,6 @@ router.delete("/:userID", [auth, admin], async (req, res) => {
       .send(user);
   } catch (ex) {
     return res.status(500).send(`Internal server error: ${ex}`);
-  }
-});
-
-// POST new post to user by user ID
-
-router.post("/:userId/posts", async (req, res) => {
-  try {
-
-    const { error } = validatePost(req.body);
-    if (error) return res.status(400).send(error);
-
-    let user = await User.findById(req.params.userId);
-    if (!user)
-      return res
-        .status(400)
-        .send(`User with ID ${req.params.userId} does not exist!`);
-
-    if (error) return res.status(400).send(error);
-
-    const newPost = await new Post(req.body);
-    user.posts.push(newPost);
-    await user.save();
-
-    return res.status(201).send([newPost, user]);
-  } catch (error) {
-    return res.status(500).send(`Internal Server Error: ${error}`);
   }
 });
 

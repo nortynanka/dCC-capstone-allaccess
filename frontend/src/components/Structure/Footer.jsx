@@ -1,7 +1,9 @@
+import "./Footer.css";
+
 const Footer = () => {
     return (
       <footer>
-        <p>Copyright © 2022</p>{" "}
+        <p className="footer">Copyright © 2022</p>{" "}
       </footer>
     );
   };
