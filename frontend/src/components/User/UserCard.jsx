@@ -1,10 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import AuthContext from "../../context/AuthContext";
 
 const UserCard = () => {
 
     const user = useContext(AuthContext);
-    const decodedUser = localStorage.getItem("token");
 
     return (
         

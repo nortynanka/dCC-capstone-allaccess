@@ -15,7 +15,7 @@ const RegisterPage = () => {
       <h2>Sign Up for an Account</h2>
       <form className="form" onSubmit={e => handleSubmit(e)}>
         <label>
-          Nickname:{" "}
+          Display Name:{" "}
           <input
             type="text"
             name="nickname"
@@ -39,6 +39,24 @@ const RegisterPage = () => {
             type="text"
             name="password"
             value={formData.password}
+            onChange={e => handleInputChange(e)}
+          />
+        </label>
+        <label>
+          Address:{" "}
+          <input
+            type="text"
+            name="address"
+            checked={formData.address}
+            onChange={e => handleInputChange(e)}
+          />
+        </label>
+        <label>
+          Bio:{" "}
+          <input
+            type="text"
+            name="bio"
+            checked={formData.bio}
             onChange={e => handleInputChange(e)}
           />
         </label>

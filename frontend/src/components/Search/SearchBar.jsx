@@ -17,7 +17,7 @@ const SearchBar = ({ setUserInput, userInput, placeSearch }) => {
           onChange={(event) => setUserInput(event.target.value)}
         />
       </div>
-      <button type="submit" style={{ "margin-top": "1em" }}>
+      <button onClick="handleSubmit" type="submit">
         Search
       </button>
     </form>

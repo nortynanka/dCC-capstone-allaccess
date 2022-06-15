@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import LocationCard from '../Location/LocationCard';
 
 const ResultsMapper = ({locations}) => {
-
-//const [locations, setLocations] = useState([]);
 
     return ( 
         <div>
@@ -15,5 +13,5 @@ const ResultsMapper = ({locations}) => {
         </div>
      );
 }
- 
-export default ResultsMapper;
+
+export default ResultsMapper; 

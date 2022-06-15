@@ -1,32 +1,18 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React from "react";
 
-const LocationCard = ({location}) => {
+const LocationCard = ({ location }) => {
 
-    //const [locations, setLocations] = useState([]);
+  return (
+    <div id="locationCard">
+      {console.log(location)}
+      <p className="text">Name: {location.name}</p>
+      <p className="text">Type of business: {location.types[0]}</p>
+      <p className="text">Address: {location.vicinity}</p>
+      <p className="text">Business status: {location.business_status}</p>
+      <p className="text">Is the owner registered on allAccess?</p>
+      <p className="text">If so, what is the owner's nickname?</p>
+    </div>
+  );
+};
 
-    // setLocations = async () => {
-    //     let locations = await axios.get(`http://localhost:3013/api/locations/`);
-    //     console.log(locations);
-    //     return locations;
-    // };
-
-    return (
-        
-        <div id="locationCard">
-            {console.log(location)}
-                <p className="text">Name: {location.name}</p>
-                {/* <p className="text">Category: {location.category}</p>
-                <p className="text">Street Address: {location.streetAddress}</p>
-                <p className="text">City: {location.city}</p>
-                <p className="text">State: {location.state}</p>
-                <p className="text">Country: {location.country}</p>
-                <p className="text">Phone: {location.phone}</p>
-                <p className="text">Registered Owner: {location.isOwnerRegistered}</p>
-                <p className="text">Owner Name: {location.ownerName}</p> */}
-        </div>
-
-     );
-}
- 
 export default LocationCard;

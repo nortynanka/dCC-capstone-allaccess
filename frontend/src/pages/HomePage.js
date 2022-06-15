@@ -1,10 +1,13 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 import SearchBar from "../components/Search/SearchBar";
+import ResultsMapper from "../components/Search/ResultsMapper";
+import UserCard from "../components/User/UserCard";
+import axios from "axios";
 
 const HomePage = () => {
-  const [userInput] = useState("");
-  const [setLocations] = useState(null);
+  const [userInput, setUserInput] = useState("");
+  const [locations, setLocations] = useState(null);
+  const decodedUser = localStorage.getItem("token");
 
   useEffect(() => {}, []);
 
@@ -12,23 +15,19 @@ const HomePage = () => {
     await axios
       .get(`http://localhost:3013/api/locations/googlePlace/${userInput}`)
       .then((res) => {
-        console.log(res.data.results.place_id);
-        setLocations(res.data);
-        return res.data.results.place_id;
-      });
+        console.log(res.data)
+        setLocations(res.data)}
+        );
   };
 
   return (
     <div>
-      <SearchBar />
+      <h3><b><i>Search</i></b> for a Milwaukee business</h3>
+      <UserCard user={decodedUser} />
+      <SearchBar placeSearch={placeSearch} userInput={userInput} setUserInput={setUserInput} />
+      <ResultsMapper locations={locations} setLocations={setLocations} />
     </div>
   );
 };
-
-//   const detailReq = async () => {
-//     await axios.get(`https://maps.googleapis.com/maps/api/place/details/output?${res.data.results.place_id}`).then((res) =>)
-//   }
-
-//   };
 
 export default HomePage;
