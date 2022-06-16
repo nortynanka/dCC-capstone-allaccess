@@ -25,7 +25,12 @@ li {
     background: transparent;
     color: white;
     font-size: 1.5rem;
-    padding: 0.5rem;
+}
+
+a {
+    font-family: Calibri, Arial, sans-serif;
+    background: transparent;
+    color: white;
 }
 
 button {

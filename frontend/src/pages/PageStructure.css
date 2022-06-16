@@ -15,8 +15,3 @@ button:hover {
     color: white;
     cursor: pointer;
 }
-
-routeLink {
-    background: transparent;
-    color: white;
-}

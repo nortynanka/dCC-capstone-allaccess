@@ -27,11 +27,11 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route className="routeLink" path="/home" element={<HomePage /> } />
-        <Route className="routeLink" path="/login" element={<LoginPage />} />
-        <Route className="routeLink" path="/register" element={<RegisterPage />} />
-        <Route className="routeLink" path="/feedback" element={<FeedbackPage />} />
-        <Route className="routeLink" path="/newlocation" element={<NewLocationPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/feedback" element={<FeedbackPage />} />
+        <Route path="/newlocation" element={<NewLocationPage />} />
       </Routes>
       <Footer />
     </div>

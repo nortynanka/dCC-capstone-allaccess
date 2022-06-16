@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
         setUser(jwtDecode(token));
         navigate("/login");
       } else {
-        navigate("/login");
+        navigate("/");
       }
     } catch (error) {
       console.log(error);
@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
         console.log("Successfully registered data.");
         navigate("/");
       } else {
-        navigate("/locations/createNew");
+        navigate("/newlocation");
       }
     } catch (error) {
       console.log(error);
@@ -60,9 +60,9 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem("token", response.data);
         setUser(jwtDecode(response.data));
         setIsServerError(false);
-        navigate("/");
+        navigate("/home");
       } else {
-        navigate("/register");
+        navigate("/");
       }
     } catch (error) {
       console.log(error.message);

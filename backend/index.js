@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(`/api/users`, usersRouter);
 app.use(`/api/locations`, locationsRouter);
 
-const port = process.env.PORT || 3013;
+const port = process.env.PORT || 3011;
 app.listen(port, () => {
     console.log(`Server started on port: ${port}`);
 });
