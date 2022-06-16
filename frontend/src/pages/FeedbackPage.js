@@ -1,5 +1,5 @@
 import React from "react";
-import useCustomForm from "../hooks/useCustomForm";
+import Form from "../hooks/Form";
 
 import "./PageStructure.css";
 
@@ -22,7 +22,7 @@ const FeedbackPage = () => {
     notes: "",
   };
   const [formData, handleInputChange, handleSubmit] =
-    useCustomForm(defaultValues);
+    Form(defaultValues);
 
   return (
     <div className="container">

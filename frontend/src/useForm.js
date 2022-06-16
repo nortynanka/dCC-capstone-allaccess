@@ -10,7 +10,7 @@ const useForm = (cb) => {
 
 // Change handler
 
-  const handleChange = (e) => {
+  const handleInputChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value });
   };
 
@@ -25,7 +25,7 @@ const useForm = (cb) => {
 
 // Return values
 
-  return { formValues, handleChange, handleSubmit };
+  return { formValues, handleInputChange, handleSubmit };
 };
 
 // Export hook

@@ -1,14 +1,14 @@
 import React, { useContext, useEffect } from "react";
 import AuthContext from "../context/AuthContext";
-import useCustomForm from "../hooks/useCustomForm";
+import Form from "../hooks/Form";
 import { Link } from "react-router-dom";
 
 import "./PageStructure.css";
 
 const LoginPage = () => {
   const { loginUser, isServerError } = useContext(AuthContext);
-  const defaultValues = { email: " ", password: " " };
-  const [formData, handleInputChange, handleSubmit, reset] = useCustomForm(
+  const defaultValues = { email: "", password: "" };
+  const [formData, handleInputChange, handleSubmit, reset] = Form(
     defaultValues,
     loginUser
   );
@@ -27,14 +27,14 @@ const LoginPage = () => {
         </b>{" "}
         to view your personalized experience
       </h3>
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form" onSubmit={(e) => handleSubmit(e)}>
         <p><label>
           Email:{" "}
           <input
             type="text"
             name="email"
             value={formData.email}
-            onChange={handleInputChange}
+            onChange={(e) => handleInputChange(e)}
           />
         </label></p>
         <p><label>
@@ -43,7 +43,7 @@ const LoginPage = () => {
             type="text"
             name="password"
             value={formData.password}
-            onChange={handleInputChange}
+            onChange={(e) => handleInputChange(e)}
           />
         </label></p>
         {isServerError ? (

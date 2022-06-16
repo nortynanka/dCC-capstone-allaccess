@@ -1,6 +1,6 @@
-import React from "react";
-import useCustomForm from "../hooks/useCustomForm";
-import registerLocation from "../context/AuthContext";
+import React, { useContext } from "react";
+import Form from "../hooks/Form";
+import AuthContext from "../context/AuthContext";
 
 import "./PageStructure.css";
 
@@ -12,7 +12,10 @@ const NewLocationPage = () => {
     isOwnerRegistered: false,
     ownerName: "",
   };
-  const [formData, handleInputChange, handleSubmit] = useCustomForm(
+
+  const { registerLocation } = useContext(AuthContext);
+
+  const [formData, handleInputChange, handleSubmit] = Form(
     defaultValues,
     registerLocation
   );
@@ -22,68 +25,58 @@ const NewLocationPage = () => {
       <h3>
         <i>Add</i> a business to our database
       </h3>
-      <form className="form" onSubmit={(e) => handleSubmit(e)}>
-        <p>
-          {" "}
-          <label>
-            Name:{" "}
-            <input
-              type="text"
-              name="name"
-              placeholder="5 character minimum"
-              value={formData.name}
-              onChange={(e) => handleInputChange(e)}
-            />
-          </label>
-        </p>
-        <p>
-          {" "}
-          <label>
-            What type of business is this?{" "}
-            <input
-              type="text"
-              name="category"
-              value={formData.category}
-              onChange={(e) => handleInputChange(e)}
-            />
-          </label>
-        </p>
-        <p>
-          {" "}
-          <label>
-            Address:{" "}
-            <input
-              type="text"
-              name="vicinity"
-              value={formData.vicinity}
-              onChange={(e) => handleInputChange(e)}
-            />
-          </label>
-        </p>
-        <p>
-          {" "}
-          <label>
-            Is the owner registered with allAccess?{" "}
-            <input
-              type="checkbox"
-              name="isOwnerRegistered"
-              checked={formData.isOwnerRegistered}
-              onChange={(e) => handleInputChange(e)}
-            />
-          </label>
-        </p>
-        <p>
-          {" "}
-          <label>
-            If so, what is their name?{" "}
-            <input
-              type="text"
-              name="ownerName"
-              checked={formData.ownerName}
-              onChange={(e) => handleInputChange(e)}
-            />
-          </label>
-        </p>
+      <form children={Form} className="form" onSubmit={(e) => handleSubmit(e)}>
+        <label>
+          Name:{" "}
+          <input
+            type="text"
+            name="name"
+            placeholder="5 character minimum"
+            value={formData.name}
+            onChange={(e) => handleInputChange(e)}
+          />
+        </label>
+
+        <label>
+          What type of business is this?{" "}
+          <input
+            type="text"
+            name="category"
+            value={formData.category}
+            onChange={(e) => handleInputChange(e)}
+          />
+        </label>
+
+        <label>
+          Address:{" "}
+          <input
+            type="text"
+            name="vicinity"
+            value={formData.vicinity}
+            onChange={(e) => handleInputChange(e)}
+          />
+        </label>
+
+        <label>
+          Is the owner registered with allAccess?{" "}
+          <input
+            type="checkbox"
+            name="isOwnerRegistered"
+            checked={formData.isOwnerRegistered}
+            onChange={(e) => handleInputChange(e)}
+          />
+        </label>
+
+        <label>
+          If so, what is their name?{" "}
+          <input
+            type="text"
+            name="ownerName"
+            checked={formData.ownerName}
+            onChange={(e) => handleInputChange(e)}
+          />
+        </label>
+
         <button type="submit">Submit Form</button>
       </form>
     </div>

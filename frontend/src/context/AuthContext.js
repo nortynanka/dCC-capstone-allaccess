@@ -16,18 +16,16 @@ export const AuthProvider = ({ children }) => {
   const [isServerError, setIsServerError] = useState(false);
   const navigate = useNavigate();
 
-  const registerUser = async (registerData) => {
+  const registerUser = async (userData) => {
     try {
-      let response = await axios.post(
-        `${BASE_URL_USERS}/register`,
-        registerData
-      );
+      let response = await axios.post(`${BASE_URL_USERS}/register`, userData);
       if (response.status === 200) {
         let token = response.headers["x-auth-token"];
         localStorage.setItem("token", token);
         setUser(jwtDecode(token));
         navigate("/login");
       } else {
+        console.log("An error occurred. Please try again.");
         navigate("/");
       }
     } catch (error) {
@@ -35,17 +33,36 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const registerLocation = async (registerData) => {
+  const registerLocation = async (locationData) => {
     try {
       let response = await axios.post(
         `${BASE_URL_LOCATIONS}/createNew`,
-        registerData
+        locationData
       );
       if (response.status === 200) {
         console.log("Successfully registered data.");
         navigate("/");
       } else {
+        console.log("An error occurred. Please try again.");
         navigate("/newlocation");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addPost = async (postData) => {
+    try {
+      let response = await axios.post(
+        `${BASE_URL_LOCATIONS}/:locationID/createNew`,    // Function to grab place_id or MongoDB ID or other unique identifier from the specified location?
+        postData
+      );
+      if (response.status === 200) {
+        console.log("Successfully registered data.");
+        navigate("/");
+      } else {
+        console.log("An error occurred. Please try again.");
+        navigate("/");
       }
     } catch (error) {
       console.log(error);
@@ -62,6 +79,7 @@ export const AuthProvider = ({ children }) => {
         setIsServerError(false);
         navigate("/home");
       } else {
+        console.log("An error occurred. Please try again.");
         navigate("/");
       }
     } catch (error) {
@@ -84,6 +102,7 @@ export const AuthProvider = ({ children }) => {
     logoutUser,
     registerUser,
     registerLocation,
+    addPost,
     isServerError,
     setUser,
   };
