@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import axios from "axios";
+
 import SearchBar from "../components/Search/SearchBar";
 import ResultsMapper from "../components/Search/ResultsMapper";
-import axios from "axios";
+import MapEmbed from "../components/Map/MapEmbed";
 
 import "./PageStructure.css";
 
@@ -13,16 +15,26 @@ const HomePage = () => {
     await axios
       .get(`http://localhost:3013/api/locations/googlePlace/${userInput}`)
       .then((res) => {
-        console.log(res.data)
-        setLocations(res.data)}
-        );
+        console.log(res.data);
+        setLocations(res.data);
+      });
   };
 
   return (
     <div>
-      <h3><b><i>Search</i></b> for a Milwaukee business</h3>
-      <SearchBar placeSearch={placeSearch} userInput={userInput} setUserInput={setUserInput} />
+      <h3>
+        <b>
+          <i>Search</i>
+        </b>{" "}
+        for a Milwaukee business
+      </h3>
+      <SearchBar
+        placeSearch={placeSearch}
+        userInput={userInput}
+        setUserInput={setUserInput}
+      />
       <ResultsMapper locations={locations} setLocations={setLocations} />
+      <MapEmbed userInput={userInput}/>
     </div>
   );
 };

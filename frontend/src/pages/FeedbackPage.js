@@ -1,5 +1,6 @@
 import React from "react";
 import Form from "../hooks/Form";
+import createPost from "../context/AuthContext";
 
 import "./PageStructure.css";
 
@@ -22,7 +23,7 @@ const FeedbackPage = () => {
     notes: "",
   };
   const [formData, handleInputChange, handleSubmit] =
-    Form(defaultValues);
+    Form(defaultValues, createPost);
 
   return (
     <div className="container">

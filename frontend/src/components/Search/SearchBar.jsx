@@ -7,6 +7,7 @@ const SearchBar = ({ setUserInput, userInput, placeSearch }) => {
   }
 
   return (
+
     <form onSubmit={(e) => beginNewSearch(e)} className="form-grid">
       <div className="form-group">
         <label>Search</label>
@@ -20,6 +21,7 @@ const SearchBar = ({ setUserInput, userInput, placeSearch }) => {
       <button onClick="handleSubmit" type="submit">
         Search
       </button>
+
     </form>
   );
 };
