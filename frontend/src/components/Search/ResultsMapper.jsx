@@ -4,7 +4,7 @@ import LocationCard from '../Location/LocationCard';
 const ResultsMapper = (props) => {
 
     return ( 
-        <div>
+        <div className="form-grid">
             {props.locations && props.locations.map((location) => 
                 <li key={location._id}>
                     <LocationCard location={location} />

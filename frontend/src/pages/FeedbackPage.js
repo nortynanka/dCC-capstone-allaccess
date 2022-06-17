@@ -2,8 +2,6 @@ import React from "react";
 import Form from "../hooks/Form";
 import createPost from "../context/AuthContext";
 
-import "./PageStructure.css";
-
 const FeedbackPage = () => {
   const defaultValues = {
     nickname: "",
@@ -34,7 +32,6 @@ const FeedbackPage = () => {
         your experience at a Milwaukee business
       </h3>
       <form className="form" onSubmit={(e) => handleSubmit(e)}>
-        <p></p>
         <p>
           {" "}
           <label>
@@ -217,7 +214,7 @@ const FeedbackPage = () => {
             />
           </label>
         </p>
-        <button type="submit">Submit Form</button>
+        <p><button type="submit">Submit Form</button></p>
       </form>
     </div>
   );

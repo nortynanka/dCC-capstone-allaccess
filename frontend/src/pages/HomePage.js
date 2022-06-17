@@ -5,8 +5,6 @@ import SearchBar from "../components/Search/SearchBar";
 import ResultsMapper from "../components/Search/ResultsMapper";
 import MapEmbed from "../components/Map/MapEmbed";
 
-import "./PageStructure.css";
-
 const HomePage = () => {
   const [userInput, setUserInput] = useState("");
   const [locations, setLocations] = useState(null);
@@ -21,12 +19,12 @@ const HomePage = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h3>
         <b>
           <i>Search</i>
         </b>{" "}
-        for a Milwaukee business
+        for a business or venue near you:
       </h3>
       <SearchBar
         placeSearch={placeSearch}

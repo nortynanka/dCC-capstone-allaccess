@@ -7,21 +7,25 @@ const SearchBar = ({ setUserInput, userInput, placeSearch }) => {
   }
 
   return (
-
     <form onSubmit={(e) => beginNewSearch(e)} className="form-grid">
       <div className="form-group">
-        <label>Search</label>
-        <input
-          type="text"
-          className="form-control"
-          value={userInput}
-          onChange={(event) => setUserInput(event.target.value)}
-        />
+        <p>
+          <label>
+            What kind of place do you need?{" "}
+            <input
+              type="text"
+              className="form-control"
+              value={userInput}
+              onChange={(event) => setUserInput(event.target.value)}
+            />
+          </label>
+        </p>
       </div>
-      <button onClick="handleSubmit" type="submit">
-        Search
-      </button>
-
+      <p>
+        <button onClick="handleSubmit" type="submit">
+          Search
+        </button>
+      </p>
     </form>
   );
 };

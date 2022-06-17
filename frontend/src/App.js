@@ -12,11 +12,11 @@ import Footer from "./components/Structure/Footer";
 
 import PrivateRoute from "./utils/PrivateRoute";
 
-import "./pages/PageStructure.css";
+import "./App.css";
 
 function App() {
   return (
-    <div>
+    <body>
       <NavBar />
       <Routes>
         <Route
@@ -34,7 +34,7 @@ function App() {
         <Route path="/newlocation" element={<NewLocationPage />} />
       </Routes>
       <Footer />
-    </div>
+    </body>
   );
 };
 

@@ -1,0 +1,43 @@
+body {
+    background-image: url("https://i.imgur.com/08o02zO.jpg");
+    background-size: 50rem;
+    background-repeat: repeat;
+} 
+
+.container {
+    margin: auto;
+    height: 35rem;
+    width: 45rem;
+    background-color: #F2F2F2;
+    box-shadow: 4px 3px 5px gray;
+    padding: 1rem;
+}
+
+h3 {
+    font-size: 2rem;
+    font-family: Arial;
+}
+
+i {
+    font-family: 'Lucida Sans';
+}
+
+p, label {
+    font-size: 1.2rem;
+    font-family: Calibri, Arial, sans-serif;
+}
+
+button {
+    background: #F2C879;
+    border: none;
+    color: white;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+}
+
+button:hover {
+    background: #FFDA96;
+    border: none;
+    color: white;
+    cursor: pointer;
+}

@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate} from "react-router-dom";
 
+import "./LocationCard.css";
+
 const LocationCard = ({ location }) => {
 
   const navigate = useNavigate();

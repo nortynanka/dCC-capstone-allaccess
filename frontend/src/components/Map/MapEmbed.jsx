@@ -11,7 +11,7 @@ const MapEmbed = ({userInput}) => {
       height="250"
       frameborder="0"
       referrerpolicy="no-referrer-when-downgrade"
-      src={`https://www.google.com/maps/embed/v1/search?key=AIzaSyCLOq-nOv-VaPMn3ThIXUo_TSFCAHZge5w&q=${userInput}`}
+      src={`https://www.google.com/maps/embed/v1/search?key=API_KEY&q=${userInput}`}
       allowfullscreen
     ></iframe>
   );

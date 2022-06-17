@@ -3,8 +3,6 @@ import AuthContext from "../context/AuthContext";
 import Form from "../hooks/Form";
 import { Link } from "react-router-dom";
 
-import "./PageStructure.css";
-
 const LoginPage = () => {
   const { loginUser, isServerError } = useContext(AuthContext);
   const defaultValues = { email: "", password: "" };
