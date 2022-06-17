@@ -2,8 +2,9 @@ import React from "react";
 import Form from "../hooks/Form";
 import createPost from "../context/AuthContext";
 
-const FeedbackPage = () => {
+const FeedbackPage = ({location}) => {
   const defaultValues = {
+    locationName: location.name,
     nickname: "",
     currentDate: "",
     visitDate: "",
@@ -32,10 +33,23 @@ const FeedbackPage = () => {
         your experience at a Milwaukee business
       </h3>
       <form className="form" onSubmit={(e) => handleSubmit(e)}>
+      <p>
+          {" "}
+          <label>
+            Business name:{" "}
+            <input
+              type="text"
+              name="locationName"
+              placeholder="5 character minimum"
+              value={formData.locationName}
+              onChange={(e) => handleInputChange(e)}
+            />
+          </label>
+        </p>
         <p>
           {" "}
           <label>
-            Nickname:{" "}
+            Your name:{" "}
             <input
               type="text"
               name="nickname"
@@ -52,6 +66,7 @@ const FeedbackPage = () => {
             <input
               type="date"
               name="currentDate"
+              value={formData.currentDate}
               onChange={(e) => handleInputChange(e)}
             />
           </label>
@@ -63,6 +78,7 @@ const FeedbackPage = () => {
             <input
               type="date"
               name="visitDate"
+              value={formData.visitDate}
               onChange={(e) => handleInputChange(e)}
             />
           </label>

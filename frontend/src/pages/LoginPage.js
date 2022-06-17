@@ -38,7 +38,7 @@ const LoginPage = () => {
         <p><label>
           Password:{" "}
           <input
-            type="text"
+            type="password"
             name="password"
             value={formData.password}
             onChange={(e) => handleInputChange(e)}
@@ -47,8 +47,8 @@ const LoginPage = () => {
         {isServerError ? (
           <p className="error">Login failed. Incorrect credentials.</p>
         ) : null}
-        <Link to="/register">Click to register!</Link>
-        <button type="submit">Login</button>
+        <p><Link className="bodyLink" to="/register">Sign Up</Link></p>
+        <p><button type="submit">Login</button></p>
       </form>
     </div>
   );

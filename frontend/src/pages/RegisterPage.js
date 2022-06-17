@@ -3,7 +3,6 @@ import AuthContext from "../context/AuthContext";
 import Form from "../hooks/Form";
 
 const RegisterPage = () => {
-
   const { registerUser } = useContext(AuthContext);
   const defaultValues = {
     nickname: "",
@@ -25,82 +24,98 @@ const RegisterPage = () => {
         <i>Create</i> a new account
       </h3>
       <form className="form" onSubmit={(e) => handleSubmit(e)}>
-        <label>
-          Display Name:{" "}
-          <input
-            type="text"
-            name="nickname"
-            placeholder="5 character minimum"
-            value={formData.nickname}
-            onChange={(e) => handleInputChange(e)}
-          />
-        </label>
+        <p>
+          <label>
+            Display Name:{" "}
+            <input
+              type="text"
+              name="nickname"
+              placeholder="5 character minimum"
+              value={formData.nickname}
+              onChange={(e) => handleInputChange(e)}
+            />
+          </label>
+        </p>
 
-        <label>
-          Email:{" "}
-          <input
-            type="text"
-            name="email"
-            placeholder="Valid email required"
-            value={formData.email}
-            onChange={(e) => handleInputChange(e)}
-          />
-        </label>
+        <p>
+          <label>
+            Email:{" "}
+            <input
+              type="text"
+              name="email"
+              placeholder="Valid email required"
+              value={formData.email}
+              onChange={(e) => handleInputChange(e)}
+            />
+          </label>
+        </p>
 
-        <label>
-          Password:{" "}
-          <input
-            type="text"
-            name="password"
-            placeholder="8 character minimum"
-            value={formData.password}
-            onChange={(e) => handleInputChange(e)}
-          />
-        </label>
+        <p>
+          <label>
+            Password:{" "}
+            <input
+              type="password"
+              name="password"
+              placeholder="8 character minimum"
+              value={formData.password}
+              onChange={(e) => handleInputChange(e)}
+            />
+          </label>
+        </p>
 
-        <label>
-          Address:{" "}
-          <input
-            type="text"
-            name="address"
-            placeholder="Required; not shared with anyone"
-            checked={formData.address}
-            onChange={(e) => handleInputChange(e)}
-          />
-        </label>
+        <p>
+          <label>
+            Address:{" "}
+            <input
+              type="text"
+              name="address"
+              placeholder="Required; not shared with anyone"
+              checked={formData.address}
+              onChange={(e) => handleInputChange(e)}
+            />
+          </label>
+        </p>
 
-        <label>
-          Bio:{" "}
-          <input
-            type="text"
-            name="bio"
-            placeholder="Optional"
-            checked={formData.bio}
-            onChange={(e) => handleInputChange(e)}
-          />
-        </label>
+        <p>
+          <label>
+            Bio:{" "}
+            <input
+              type="text"
+              name="bio"
+              placeholder="Optional"
+              checked={formData.bio}
+              onChange={(e) => handleInputChange(e)}
+            />
+          </label>
+        </p>
 
-        <label>
-          Check the box if you are a caregiver of someone with a disability.{" "}
-          <input
-            type="checkbox"
-            name="isCaregiver"
-            checked={formData.isCaregiver}
-            onChange={(e) => handleInputChange(e)}
-          />
-        </label>
+        <p>
+          <label>
+            Check the box if you are a caregiver of someone with a disability.{" "}
+            <input
+              type="checkbox"
+              name="isCaregiver"
+              checked={formData.isCaregiver}
+              onChange={(e) => handleInputChange(e)}
+            />
+          </label>
+        </p>
 
-        <label>
-          Check the box if you are a business owner.{" "}
-          <input
-            type="checkbox"
-            name="isOwner"
-            checked={formData.isOwner}
-            onChange={(e) => handleInputChange(e)}
-          />
-        </label>
+        <p>
+          <label>
+            Check the box if you are a business owner.{" "}
+            <input
+              type="checkbox"
+              name="isOwner"
+              checked={formData.isOwner}
+              onChange={(e) => handleInputChange(e)}
+            />
+          </label>
+        </p>
 
-        <button type="submit">Register</button>
+        <p>
+          <button type="submit">Register</button>
+        </p>
       </form>
     </div>
   );

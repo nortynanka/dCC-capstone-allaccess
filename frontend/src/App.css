@@ -1,6 +1,6 @@
 body {
-    background-image: url("https://i.imgur.com/08o02zO.jpg");
-    background-size: 50rem;
+    background-image: url("https://i.imgur.com/eMsWrjL.jpg");
+    background-size: 20rem;
     background-repeat: repeat;
 } 
 
@@ -22,12 +22,17 @@ i {
     font-family: 'Lucida Sans';
 }
 
-p, label {
+p {
     font-size: 1.2rem;
     font-family: Calibri, Arial, sans-serif;
+    color: black;
 }
 
-button {
+label {
+    font-size: 1.3rem;
+}
+
+button, .bodyLink {
     background: #F2C879;
     border: none;
     color: white;
@@ -35,7 +40,7 @@ button {
     padding: 0.5rem;
 }
 
-button:hover {
+button:hover, .bodyLink:hover {
     background: #FFDA96;
     border: none;
     color: white;
