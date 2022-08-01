@@ -12,7 +12,7 @@ const MapEmbed = ({ userInput }) => {
         height="330"
         frameborder="0"
         referrerpolicy="no-referrer-when-downgrade"
-        src={`https://www.google.com/maps/embed/v1/search?key=AIzaSyBJVw5bpoEwBTrFbpylt2Dbin1RHvA04tA&q=${userInput}`}
+        src={`https://www.google.com/maps/embed/v1/search?key=${API_KEY_HERE}&q=${userInput}`}
         allowfullscreen
       ></iframe>
     </div>
