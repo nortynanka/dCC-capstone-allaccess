@@ -24,7 +24,7 @@ const HomePage = () => {
         <b>
           <i>Search</i>
         </b>{" "}
-        for a business or venue near you:
+        near your location
       </h3>
       <SearchBar
         placeSearch={placeSearch}

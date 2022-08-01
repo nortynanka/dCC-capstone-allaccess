@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./SearchBar.css";
+
 const SearchBar = ({ setUserInput, userInput, placeSearch }) => {
   function beginNewSearch(event) {
     event.preventDefault();
@@ -22,9 +24,7 @@ const SearchBar = ({ setUserInput, userInput, placeSearch }) => {
         </p>
       </div>
       <p>
-        <button onClick="handleSubmit" type="submit">
-          Search
-        </button>
+        <button type="submit">Search</button>
       </p>
     </form>
   );

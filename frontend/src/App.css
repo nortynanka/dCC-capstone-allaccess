@@ -1,19 +1,20 @@
 body {
     background-image: url("https://i.imgur.com/eMsWrjL.jpg");
-    background-size: 20rem;
+    background-size: 30rem;
     background-repeat: repeat;
 } 
 
 .container {
     margin: auto;
-    height: 35rem;
-    width: 45rem;
+    max-height: auto;
+    max-width: 45rem;
     background-color: #F2F2F2;
     box-shadow: 4px 3px 5px gray;
     padding: 1rem;
 }
 
 h3 {
+    text-align: center;
     font-size: 2rem;
     font-family: Arial;
 }
@@ -30,6 +31,10 @@ p {
 
 label {
     font-size: 1.3rem;
+}
+
+li {
+    list-style-type: none;
 }
 
 button, .bodyLink {

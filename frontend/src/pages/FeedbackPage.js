@@ -2,9 +2,9 @@ import React from "react";
 import Form from "../hooks/Form";
 import createPost from "../context/AuthContext";
 
-const FeedbackPage = ({location}) => {
+const FeedbackPage = () => {
   const defaultValues = {
-    locationName: location.name,
+    locationName: "",
     nickname: "",
     currentDate: "",
     visitDate: "",

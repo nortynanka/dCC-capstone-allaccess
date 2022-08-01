@@ -1,19 +1,21 @@
 import React from "react";
 
-const MapEmbed = ({userInput}) => {
+import "./MapEmbed.css";
 
-
+const MapEmbed = ({ userInput }) => {
 
   return (
-    <iframe
-      title="mapEmbed"
-      width="450"
-      height="250"
-      frameborder="0"
-      referrerpolicy="no-referrer-when-downgrade"
-      src={`https://www.google.com/maps/embed/v1/search?key=API_KEY&q=${userInput}`}
-      allowfullscreen
-    ></iframe>
+    <div className="mapEmbed">
+      <iframe
+        title="mapEmbed"
+        width="720"
+        height="330"
+        frameborder="0"
+        referrerpolicy="no-referrer-when-downgrade"
+        src={`https://www.google.com/maps/embed/v1/search?key=AIzaSyBJVw5bpoEwBTrFbpylt2Dbin1RHvA04tA&q=${userInput}`}
+        allowfullscreen
+      ></iframe>
+    </div>
   );
 };
 

@@ -17,7 +17,7 @@ const LocationCard = ({ location }) => {
       <p className="text">Is the owner registered on allAccess?</p>
       <p className="text">If so, what is the owner's nickname?</p>
       <p className="text">Here's what others had to say about {location.name}: {[location.posts]}</p>
-      <button onClick={navigate("/feedback")}>Share your Experience</button>
+      <button onClick={() => navigate("/feedback")}>Share your Experience</button>
     </div>
   );
 };

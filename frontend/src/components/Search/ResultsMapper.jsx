@@ -9,7 +9,7 @@ const ResultsMapper = (props) => {
                 <li key={location._id}>
                     <LocationCard location={location} />
                 </li>
-            )};
+            )}
         </div>
      );
 }
