@@ -4,30 +4,30 @@
 # Description:
 You might have noticed features on navigation platforms and search engines that provide accessibility information about various locations. These include things like wheelchair-accessible parking and wheelchair-accessible entrances. While they are a good start and I believe companies are acting with the best of intentions, these features only offer limited and even inaccurate opinions from everyday users who might not actually know what it's like to...
 
-   ...maneuver a wheelchair to a local business that has wheelchair-accessible parking, only to find that the door has to be pulled open manually,
-   ...be blind or have low vision, and the only accommodations at a concert venue are just Braille signs indicating the men's and women's restrooms,
-   ...have a developmental disability and struggle to find businesses where the employees are patient while they work to communicate with you instead of rushing you the door,
+...maneuver a wheelchair to a local business that has wheelchair-accessible parking, only to find that the door has to be pulled open manually,
+...be blind or have low vision, and the only accommodations at a concert venue are just Braille signs indicating the men's and women's restrooms,
+...have a developmental disability and struggle to find businesses where the employees are patient while they work to communicate with you instead of rushing you the door,
 
 and countless other conundrums that are more-or-less an inevitable part of living with a disability.
 
 allAccess aims to solve this issue with the opportunity for users who *have* experienced situations like those listed above to share their experiences with each other. The application also allows business owners to open lines of communication with the disability community so they can learn what it means to navigate their business with a varying disabilities and receive suggestions as to how to make their business **truly accessible**.
 
 # Technologies used/planned:
-[x] MERN stack
-    [x] MongoDB
-    [x] Express
-    [x] React.js
-    [x] Node.js
-[x] JavaScript
-    [x] JSON
-    [x] JWT
-[x] Google Cloud Platform
-    [x] Google Places API
-    [x] Google JavaScript Maps API
-    [ ] Google Geocoding API
-    [ ] Google Distance Matrix API
-[x] HTML5
-[x] CSS
+- [x] MERN stack
+-     [x] MongoDB
+-     [x] Express
+-     [x] React.js
+-     [x] Node.js
+- [x] JavaScript
+-     [x] JSON
+-     [x] JWT
+- [x] Google Cloud Platform
+-     [x] Google Places API
+-     [x] Google JavaScript Maps API
+-     [ ] Google Geocoding API
+-     [ ] Google Distance Matrix API
+- [x] HTML5
+- [x] CSS
 
 # Application features:
 [x] User account registration, login, and logout with encryption via JWT.
