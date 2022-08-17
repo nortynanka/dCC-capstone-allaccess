@@ -14,28 +14,28 @@ allAccess aims to solve this issue with the opportunity for users who *have* exp
 
 # Technologies used/planned:
 - [x] MERN stack
--     [x] MongoDB
--     [x] Express
--     [x] React.js
--     [x] Node.js
+   - [x] MongoDB
+   - [x] Express
+   - [x] React.js
+   - [x] Node.js
 - [x] JavaScript
--     [x] JSON
--     [x] JWT
+   - [x] JSON
+   - [x] JWT
 - [x] Google Cloud Platform
--     [x] Google Places API
--     [x] Google JavaScript Maps API
--     [ ] Google Geocoding API
--     [ ] Google Distance Matrix API
+   - [x] Google Places API
+   - [x] Google JavaScript Maps API
+   - [ ] Google Geocoding API
+   - [ ] Google Distance Matrix API
 - [x] HTML5
 - [x] CSS
 
 # Application features:
-[x] User account registration, login, and logout with encryption via JWT.
-[x] User profile creation including the option to self-identify as a caregiver or business owner.
-[x] A search component that does not require an account to use. It takes in keywords and returns a list of businesses (Places API) near the user’s current location (Geocoding API) as well as basic info like the address and whether or not the business is currently open or closed.
-[x] Clicking on a location will open a page that is dedicated to info about that location as well as users’ feedback about accessibility measures and accommodations.
-[x] An interactive map (JavaScript Maps API) is featured on the landing page with pinned search results and corresponding details listed for each one.
-[x] The option for registered users to submit their own feedback about a place they visited in order to provide accessibility info for other users who intend on visiting as well.
+- [x] User account registration, login, and logout with encryption via JWT.
+- [x] User profile creation including the option to self-identify as a caregiver or business owner.
+- [x] A search component that does not require an account to use. It takes in keywords and returns a list of businesses (Places API) near the user’s current location (Geocoding API) as well as basic info like the address and whether or not the business is currently open or closed.
+- [x] Clicking on a location will open a page that is dedicated to info about that location as well as users’ feedback about accessibility measures and accommodations.
+- [x] An interactive map (JavaScript Maps API) is featured on the landing page with pinned search results and corresponding details listed for each one.
+- [x] The option for registered users to submit their own feedback about a place they visited in order to provide accessibility info for other users who intend on visiting as well.
 
 #### *Application remains under continuous development and improvement as I refine my skills.*
 
