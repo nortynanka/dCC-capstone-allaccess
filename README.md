@@ -1,4 +1,7 @@
 # allAccess
+### My Final Project for devCodeCamp
+> Grade recieved: **87%**
+
 #### The ultimate goal for this web-based application is to make communities **truly accessible** by providing accurate information to users, by users with lived experiences pertaining to the level of accessibility in local businesses, and opening lines of dialog between the disability community, their caregivers, and business owners.
 
 # Description:
